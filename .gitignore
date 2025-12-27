@@ -1,0 +1,29 @@
+# ESP-IDF Build artifacts
+build/
+build.clang/
+sdkconfig.old
+dependencies.lock
+managed_components/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+dist/
+.eggs/
+
+# Beads (if this is a temporary tool directory)
+.beads/
+
+# Logs
+*.log

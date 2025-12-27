@@ -1,0 +1,50 @@
+# clang-tidy configuration for ESP32 projects
+# Optimized for embedded C/C++ development
+# Copy this file to your ESP32 project root
+
+---
+# Enable specific check categories
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  clang-analyzer-*,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
+  concurrency-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-function-cognitive-complexity,
+  cppcoreguidelines-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-init-variables,
+
+# Treat warnings as errors (set to empty to allow warnings)
+WarningsAsErrors: ''
+
+# Filter headers
+HeaderFilterRegex: '.*'
+
+# Use .clang-format for formatting style
+FormatStyle: file
+
+# Check configuration
+CheckOptions:
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.MacroCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.TypedefCase
+    value: lower_case
+  - key: readability-identifier-naming.StructCase
+    value: lower_case
+  - key: readability-identifier-naming.EnumCase
+    value: lower_case
+  - key: performance-move-const-arg.CheckTriviallyCopyableMove
+    value: false
+  - key: bugprone-reserved-identifier.AllowedIdentifiers
+    value: '__asm__'

@@ -1,0 +1,44 @@
+# clangd configuration for ESP32-H2 (RISC-V) projects
+# Copy this file to your ESP32-H2 project root
+
+CompileFlags:
+  # Use the clang compilation database from ESP-IDF
+  CompilationDatabase: build.clang
+
+  # ESP32-H2 uses RISC-V RV32IMAC architecture
+  Add:
+    - --target=riscv32
+
+  # Remove GCC-specific flags that clangd doesn't understand
+  Remove:
+    - -m*
+    - -f*
+    - -mlongcalls  # Xtensa-specific, not used in RISC-V
+
+# Diagnostic settings
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+  ClangTidy:
+    Add:
+      - performance-*
+      - bugprone-*
+      - portability-*
+      - readability-*
+    Remove:
+      - modernize-use-trailing-return-type
+      - readability-identifier-length
+
+# Code completion settings
+Completion:
+  AllScopes: Yes
+
+# Inlay hints (requires Neovim 0.10+)
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+# Hover information
+Hover:
+  ShowAKA: Yes
