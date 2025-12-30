@@ -7,6 +7,7 @@
 #include "reed_switch.h"
 #include "relay_control.h"
 #include "garage_door_control.h"
+#include "matter_device.h"
 
 #define TAG "app_main"
 
